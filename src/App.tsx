@@ -12,6 +12,8 @@ import AttackMapPage from './components/pages/AttackMapPage';
 import CveExplorerPage from './components/pages/CveExplorerPage';
 import ThreatsPage from './components/pages/ThreatsPage';
 import SocDashboardPage from './components/pages/SocDashboardPage';
+import AttackLabPage from './components/pages/AttackLabPage';
+import SecurityDashboardPage from './components/pages/SecurityDashboardPage';
 import { LoginPage, SignupPage, ForgotPasswordPage } from './components/auth/AuthPages';
 import AdminDashboard from './components/admin/AdminDashboard';
 
@@ -35,6 +37,8 @@ export default function App() {
               <Route path="/cve" element={<CveExplorerPage />} />
               <Route path="/threats" element={<ThreatsPage />} />
               <Route path="/soc" element={<SocDashboardPage />} />
+              <Route path="/attack-lab" element={<AttackLabPage />} />
+              <Route path="/security" element={<SecurityDashboardPage />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="/signup" element={<SignupPage />} />
               <Route path="/forgot-password" element={<ForgotPasswordPage />} />

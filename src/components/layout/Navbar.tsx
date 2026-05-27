@@ -12,6 +12,8 @@ const navLinks = [
   { path: '/cve', label: 'CVE' },
   { path: '/threats', label: 'Threats' },
   { path: '/soc', label: 'SOC' },
+  { path: '/attack-lab', label: 'Attack Lab', highlight: true },
+  { path: '/security', label: 'Security Logs', highlight: true },
   { path: '/contact', label: 'Contact' },
 ];
 
@@ -54,14 +56,16 @@ export default function Navbar() {
             </span>
           </Link>
 
-          <div className="hidden lg:flex items-center gap-1">
+          <div className="hidden xl:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.path}
                 to={link.path}
-                className={`px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 ${
+                className={`px-2.5 py-2 text-xs font-medium rounded-lg transition-all duration-200 ${
                   location.pathname === link.path
                     ? 'text-neon-blue bg-neon-blue/10 border border-neon-blue/20'
+                    : link.highlight
+                    ? 'text-neon-red hover:text-neon-red/80 hover:bg-neon-red/5'
                     : 'text-dark-300 hover:text-neon-blue hover:bg-dark-800/50'
                 }`}
               >
@@ -86,7 +90,7 @@ export default function Navbar() {
             </Link>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="lg:hidden p-2 rounded-lg text-dark-400 hover:text-neon-blue transition-all"
+              className="xl:hidden p-2 rounded-lg text-dark-400 hover:text-neon-blue transition-all"
               aria-label="Toggle menu"
             >
               {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -97,7 +101,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       <div
-        className={`lg:hidden transition-all duration-300 overflow-hidden ${
+        className={`xl:hidden transition-all duration-300 overflow-hidden ${
           isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
         }`}
       >
@@ -109,18 +113,22 @@ export default function Navbar() {
               className={`block px-4 py-2.5 text-sm font-medium rounded-lg transition-all ${
                 location.pathname === link.path
                   ? 'text-neon-blue bg-neon-blue/10'
+                  : link.highlight
+                  ? 'text-neon-red hover:bg-neon-red/5'
                   : 'text-dark-300 hover:text-neon-blue hover:bg-dark-800/50'
               }`}
             >
               {link.label}
             </Link>
           ))}
-          <Link
-            to="/login"
-            className="block px-4 py-2.5 text-sm font-medium text-neon-blue border border-neon-blue/30 rounded-lg mt-2"
-          >
-            Admin Login
-          </Link>
+          <div className="pt-2 mt-2 border-t border-dark-700/30">
+            <Link
+              to="/login"
+              className="block px-4 py-2.5 text-sm font-medium text-neon-blue border border-neon-blue/30 rounded-lg text-center"
+            >
+              Admin Login
+            </Link>
+          </div>
         </div>
       </div>
     </nav>
